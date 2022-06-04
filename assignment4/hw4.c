@@ -1,5 +1,5 @@
-// name: <your name here>
-// email: <your email here>
+// name: Sahil Sah
+// email: sah.sa@northeastern.edu
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -46,20 +46,29 @@ int main(){
   printf("\n");
 
   //selection sort
-  for (i=0; i<LIMIT; i++) {
-
-    // INSERT YOUR CODE HERE
-    
-  }
+  for (int i=0; i<LIMIT-1; i++) {
+	int min = i;
+	for (int j = i + 1; j <LIMIT; j++){
+		if(source[j] < source[min])
+			min = j;
+		}
+	// conduct swap
+	int temp = source[min];
+	source[min] = source[i];
+	source[i] = temp;
+	}	    
   
   //print out sorted array in rows of 10
   printf("Destination array:\n");
-  
-
-  // INSERT YOUR CODE HERE
-    
- 
-  
+  for (i=0; i < ((LIMIT/10)+1); i++){
+	for(j=0; j<10; j++){
+	if (i*10+j <LIMIT){
+		printf("%.2d ",source[i*10+j]);
+	}
+	}
+	printf("\n");
+  }
   
   return 0;
 }
+
