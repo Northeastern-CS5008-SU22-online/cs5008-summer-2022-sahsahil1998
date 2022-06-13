@@ -35,13 +35,31 @@ char upperChar(char c){
 
 // pick pivot and then sort small and big parts 
 void quicky(char* data, int left, int right) {
+	if(left < right){
+        int pivot  = data[right];
 
-  // ADD YOUR CODE HERE
+        int i = left - 1;
 
-  return;
+        for(int j = left; j <= right-1; j++){
+            if(data[j] < pivot){
+                i++;
+
+                char c = data[i];
+                data[i] = data[j];
+                data[j] = c;
+            }
+        }
+        
+        char c = data[i + 1];
+        data[i + 1] = data[right];
+        data[right] = c;
+        
+       
+        quicky(data, left, i);
+        quicky(data,  i + 2, right);
+    }
+    return;
 }
-
-
 
 int main(){
 

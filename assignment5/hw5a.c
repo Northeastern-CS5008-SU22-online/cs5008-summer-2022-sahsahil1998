@@ -1,5 +1,5 @@
-// name: <your name here>
-// email: <your email here>
+// name: Sahil Sah
+// email: sah.sa@northeastern.edu
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,19 +31,38 @@ int findMin(int a, int b){
 }
 
 // merge two sorted sub arrays
-void mergeIt(
-	   char* data,
-	   int leftStart,
-	   int leftStop,
-	   int rightStart,
-	   int rightStop) {
+void mergeIt(char* data, int first, int mid, int last){
+  char b[LIMIT];
+  int i,j,k;
+  i=first;
+  j=mid+1;
+  k=first;
+  while(i<=mid && j<=last)
+  {
+      if(data[i]<=data[j])
+      b[k++]=data[i++];
+      else
+      b[k++]=data[j++];
+  }
   
-
-  // ADD YOUR CODE HERE
+  if(i>mid)
+  {
+      while(j<=last)
+          b[k++]=data[j++];
+      
+  }   
+      else
+      {
+          while(i<=mid)
+          b[k++]=data[i++];
+      }
   
+  for(i=first;i<=last;i++)
+  {
+      data[i]=b[i];
+  }
   return;
 }
-
 
 
 // break data array up into halves until down to single elements
@@ -64,7 +83,7 @@ void msort(char* data, int left, int right) {
     mergeIt(
 	    data,
 	    left, midPoint(left,right),
-	    midPoint(left,right)+1, right
+	    right
 	    );
   }
   return;
