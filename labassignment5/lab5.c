@@ -1,5 +1,5 @@
-/*---enter your name here----*/
-/*---enter your email here-----*/
+//Sahil Sah
+//sah.sa@northeastern.edu
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -123,11 +123,18 @@ void freenode(node_t *p){
 /* Insert a node like a Binary search tree, then convert it into a AVL tree using four cases*/
 node_t* Insert(node_t* root, int data)
 {
-
-    
-    
-    //insert your code here
-
+	//insert code here
+	if (root == NULL){
+		node_t* anode = NewNode(data);
+		root = anode;
+		return root;
+	}
+	else if (root->data < data){
+		root->right = Insert(root->right,data);
+	}
+	else{
+		root->left = Insert(root->left, data);
+	}
 
 /*updating the height after insertion of the node*/
     root->height = max(height(root->left),height(root->right))+1;
