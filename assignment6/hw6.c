@@ -1,5 +1,5 @@
-// name: <your name here>
-// email: <your email here>
+// name: Sahil Sah
+// email: sah.sa@northeastern.edu
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -244,27 +244,62 @@ void freeQueue(queue_t* qp) {
 
 void preorder (tnode_t* np) {
   // INSERT YOUR CODE HERE
-
-  return;
+	if (np == NULL){
+		return;
+	}
+	printf("%c",np->data);
+	preorder(np->left);
+	preorder(np->right);
+	return;
 }
 
 void inorder (tnode_t* np) {
   // INSERT YOUR CODE HERE
-  
-  return;
+	if (np == NULL){
+		return;
+	}
+
+	inorder(np->left);
+	printf("%c",np->data);
+
+	inorder(np->right);  
+	return;
 }
 
 void postorder (tnode_t* np) {
   // INSERT YOUR CODE HERE
-  
-  return;
+	if (np == NULL){
+		return;
+	}  
+	postorder(np->left);
+	postorder(np->right);
+	printf("%c",np->data);
+
+	return;
 }
 
 
 void breadthFirst (tnode_t* root) {
   // INSERT YOUR CODE HERE
-  
-  return;
+	tnode_t* temp;
+	queue_t* q;
+
+	temp = NULL;
+	q = newQueue();
+
+	enqueue(q, root);
+	while ( !isEmpty(q)){
+		temp = dequeue(q);
+		printf("%c", temp->data);
+		if(temp->left != NULL){
+			enqueue(q, temp->left);
+		}
+		if (temp->right != NULL){
+			enqueue(q, temp->right);
+		}
+	}  
+	freeQueue(q);
+	return;
 }
 
 
