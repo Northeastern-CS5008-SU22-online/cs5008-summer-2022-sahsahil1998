@@ -1,5 +1,5 @@
-//enter your name here
-//enter your email here
+//Sahil Sah
+//sah.sa@northeastern.edu
 
 #include <stdio.h>
 #include <string.h>
@@ -9,6 +9,9 @@
 void encrypt(char text[], int key)
 {
     //insert your code here
+    for (int i = 0; (i < 100 && text[i] != '\0'); i++){
+	text[i] = text[i] + key;
+    }
 }
 
 /*function to decrypt the data*/
@@ -16,7 +19,9 @@ void decrypt(char text[],int key)
 {
     
     //insert your code here
-    
+    for (int i = 0; (i < 100 && text[i] != '\0'); i++){
+	text[i] = text[i] - key;
+    }   
 }
 
 
