@@ -1,5 +1,5 @@
-/*Enter your name here*/
-/* Enter your email here*/
+//Sahil Sah
+//sah.sa@northeastern.edu
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
@@ -34,19 +34,46 @@ scanf("%d",&(temp->priority));
 int pri=temp->priority;
 
 /*---insert your code here----*/
+
+	if(front == NULL){
+		front = temp;
+		front->next = NULL;
+	}else{
+		p = front;
+		while(p->next != NULL && p->priority <= pri){
+			p = p->next;
+		}
+		if (p->priority > pri){
+			temp->next = p->next;
+			p->next = temp;
+		}
+		else{
+			temp->next = p->next;
+			p->next = temp;
+		}
+	}
+	return front;
+}    
     
-    
-    
-    
-}
 
 /* Delete the patient who is at the front*/
 node_t *delete(struct node *front)
 {
     
     /*---insert your code here---*/
-    
-    
+	node_t *temp;
+	if(front == NULL){
+		printf("Queue is empty\n");
+	}
+	else{
+		printf("Deleted Record is : %d\n", front->reg);
+       		printf("Patient\'s name is:%s\n", front->name);
+       	 	printf("Patient\'s age: %d\n", front->age);
+		temp = front;
+		front = front->next;
+		free(temp);
+	}
+	return front;	   
 }
 
 /* To display the patients records */
