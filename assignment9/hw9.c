@@ -1,5 +1,5 @@
-// name: <your name here>
-// email: <your email here>
+// name: Sahil Sah
+// email: sah.sa@northeastern.edu
 
 
 #include <stdio.h>
@@ -224,12 +224,23 @@ int main () {
 
   // add start node to work queue
   enqueue(q,0);
-
+  done[0] = true;
   printf("\nBREADTH FIRST TRAFERSAL\n");
   while (!isEmpty(q)) {
 
     // INSERT YOUR CODE HERE
-    
+    int currVertex = dequeue(q);
+    printf("NODE: %d\n", currVertex);
+
+    for (i = 0; i < GSIZE; i++){
+		if (E[currVertex][i] == true){
+			int adjVertex = i;
+			if (done[adjVertex] == false){
+				done[adjVertex] = true;
+				enqueue(q, adjVertex);
+			}
+		}
+	}   
   }
 
   // print out nodes that are unreachable
