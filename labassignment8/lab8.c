@@ -1,5 +1,5 @@
-//enter your email here
-//enter your name here
+//sah.sa@northeastern.edu
+//Sahil Sah
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -20,26 +20,46 @@ typedef struct Graph
 /*A function to create a newnode*/
 node* createNode(char* name)
 {
-    
+	node* newNode = (node*)malloc(sizeof(node));
+	strcpy(newNode->name, name);
+	newNode->next = NULL;
+	return newNode;    
 }
 
 /*A function to create a graph with an array of adjacency lists which is= numberof vertices*/
 Graph* createGraph(int vertices)
 {
-    
+	int i;
+	Graph* graph = (Graph*)malloc(sizeof(Graph));
+	graph->numberOfVertices = vertices;
+	graph->adjLists = (struct node **)
+		malloc(vertices * sizeof(struct node*));
+	
+	for(i = 0; i < vertices; i++){
+		graph->adjLists[i] = NULL;
+	}
+	return graph;		 
+   
 }
 
 /* function to count Number of listspresent in the graph */
-int numberoflistspresent(Graph* graph)
-{
-    
-    
+int numberoflistspresent(Graph* graph){
+	int i, j = 0;
+	for (i = 0; i < graph->numberOfVertices; i++) {
+		if (graph->adjLists[i] != NULL)
+			j++;
+	}    
+	return j;
+	
 }
 /*searching the persons who are already there in the list*/
-int search(char* name, Graph* graph)
-{
-    
-    
+int search(char* name, Graph* graph){
+	int i;
+	for (i = 0; i < numberoflistspresent(graph); i++) {
+		if (strcmp(graph->adjLists[i]->name, name) == 0)
+			return i;    
+	}
+	return -1;
 }
 /*adds an edge to an undirected graph*/
 void addConnection(Graph* graph, char* person, char* friend){
@@ -49,8 +69,19 @@ void addConnection(Graph* graph, char* person, char* friend){
     
     
     //insert your code here
-    
-    
+	if(p == -1 && graph->numberOfVertices){
+		graph->adjLists[n] = createNode(person);
+		graph->adjLists[n]->next = createNode(friend);
+	}else{
+		node*currnode = graph->adjLists[p];
+		while(currnode != NULL){
+			if(currnode->next == NULL){
+				currnode->next = createNode(friend);
+				break;
+			}
+		currnode = currnode->next;
+		}
+	}    
     
     
     
@@ -102,9 +133,9 @@ void graphDestroy(Graph *graph)
 {
     int i;
     for(i=0; i<graph->numberOfVertices;i++){
-        node *temp=graph->adjLists[i];
+        node* temp=graph->adjLists[i];
         while(temp!=NULL){
-            p=temp;
+           node *p=temp;
             temp=temp->next;
             free(p);
         }
