@@ -1,5 +1,5 @@
-// name: <your name here>
-// email: <your email here>
+// name: Sahil Sah
+// email: sah.sa@northeastern.edu
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,7 +10,7 @@
 // size of graph - 6 nodes
 #define GSIZE 6
 #define INFINITY 9999
-
+#define UNDEFINED -1
 // define a graph type - two dimensional array - association matrix
 typedef int graph_t[GSIZE][GSIZE];
 
@@ -155,19 +155,27 @@ int main () {
 
   // DIJKSTRA: create table T[V] = <infinity, undefined>
   // ********** INSERT YOUR CODE HERE **********
+	for(i = 0; i < GSIZE; i++){
+		T[i].distance = INFINITY;
+		T[i].lastStep = UNDEFINED;
+	}	
 
   // DIJKSTRA: T[source].distance = 0
   // ********** INSERT YOUR CODE HERE **********
+	int source = 0;
+	T[source].distance = 0;
 
   // DIJKSTRA: Create set Q = set(V)
   // ********** INSERT YOUR CODE HERE **********
-
+	for(int i =0; i < GSIZE; i++){
+		Q[i] = true;
+	}
 
   // DIJKSTRA: while Q is not empty
   while (setNotEmpty(Q,GSIZE)) {
     // DIJKSTRA: u = min q in Q of T[q].distance
     // ********** INSERT YOUR CODE HERE **********
-
+	u = minDistance(T, GSIZE, Q);
     // check for errors
     if (u<0) {
       printf("*** INVALID NODE FOUND while finding min distance\n");
@@ -176,27 +184,28 @@ int main () {
 
     // DIJKSTRA: S = neighbors(u)
     // ********** INSERT YOUR CODE HERE **********
-
+	setNeighbors(S, E, GSIZE, u);
 
     // DIJKSTRA: Q = Q – u
     // ********** INSERT YOUR CODE HERE **********
-
+	removeVertex(u, Q, GSIZE);
 
     // DIJKSTRA: for each neighbor v of u (ignore vertices that we have already finished)
     for (v=0; v<GSIZE; v++) {
       if (S[v] && Q[v]) {
         // DIJKSTRA: d = T[u].distance + E[u,v]
         // ********** INSERT YOUR CODE HERE **********
-
+		d = T[u].distance+ E[u][v];
 
         // DIJKSTRA: if (d < T[v].distance)
 	if (d < T[v].distance) {
   	  // DIJKSTRA: //shorter path found
   	  // DIJKSTRA: T[v].distance = d
           // ********** INSERT YOUR CODE HERE **********
-
+		T[v].distance = d;
 	  // DIJKSTRA: T[v].lastStep = u
           // ********** INSERT YOUR CODE HERE **********
+          	T[v].lastStep = u;
 	}
       }
     }
