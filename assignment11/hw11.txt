@@ -1,5 +1,5 @@
-Name: 
-Email: 
+Name: Sahil Sah
+Email: sah.sa@Northeastern.edu
 
 Homework for Module 11 
 
@@ -18,7 +18,7 @@ Q for 25 cent coin).
 
 Name | Value |   5  |  10  |  15  |  20  |  25  |  30  |  35  |  40  |  50  |
 -----+-------+------+------+------+------+------+------+------+------+------+
-  N  |   5   |  1N  |  2N  |  3N  |      |      |      |      |      |      |
-  D  |  10   |      |      |      |      |      |      |      |      |      |
-  Q  |  25   |      |      |      |      |      |      |      |      |      |
+  N  |   5   |  1N  |  2N  |  3N  |4N    |5N    |6N    |7N    |8N    |10N   |
+  D  |  10   |1N    |1D    |1D+1N |2D    |2D+1  |3D    |3D+1N |4D    |5D    |
+  Q  |  25   |1N    |1D    |1D+1N |2D    |1Q    |1Q+1N |1Q+1D |1Q+1D+1N|2Q  |
   
