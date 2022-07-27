@@ -1,5 +1,5 @@
-/* Enter your name here*/
-/* Enter your email here*/
+// Sahil Sah
+// sah.sa@northeastern.edu
 
 #include<stdio.h>
 #define MAXN 50       /* largest number of books */
@@ -30,7 +30,7 @@ void print_books(int s[], int start, int end)
     
     printf("\n{");
     for (i=start; i<=end; i++)
-    printf(" %d ",s[i]);
+   	 printf(" %d ",s[i]);
     printf("}\n");
 }
 
@@ -44,7 +44,7 @@ void print_matrix(int m[MAXN][MAXK], int n, int k)
     for (i=1; i<=n; i++) {
         for (j=1; j<=k; j++)
             printf(" %d ",m[i][j]);
-            printf("\n");
+        printf("\n");
     }
 }
 
@@ -71,7 +71,22 @@ void partition(int s[], int n, int k)
     
     
     /*Insert your code here*/
-    
+    p[0] = 0;
+    for (i = 1; i <= n; i++)
+    {
+        p[i] = p[i - 1] + s[i];
+    }
+
+    for (i = 1; i <= n; i++)
+    {
+        m[i][1] = p[i];
+    }
+
+    for (j = 1; j <= k; j++)
+    {
+        m[1][j] = s[i];
+    }
+
   
     
     
@@ -79,10 +94,10 @@ void partition(int s[], int n, int k)
 for (i=2; i<=n; i++)
     
 for (j=2; j<=k; j++)
-{
+	{
     m[i][j]=MAXINT; /*initialize infinity*/
             
-    for (x=1; x<=i-1; x++)
+    for (x=1; x<=(i-1); x++)
     {
     cost = max(m[x][j-1],p[i]-p[x]);
        //cost = max(m[x][j-1],sum(s,x+1,i));
